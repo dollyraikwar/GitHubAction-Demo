@@ -1,0 +1,20 @@
+name: ReusableSecurityWorkflow
+
+on:
+  workflow_call:
+    inputs:
+    command:
+        description: 'build command'
+        required: true
+        type: string
+ jobs:
+  runs-on: ubuntu-latest
+  env:
+  command: ${{inputs.command}}
+  steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+      - name: run command
+        run: |
+        ${{ env.command }}
+  
