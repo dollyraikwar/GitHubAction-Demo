@@ -1,0 +1,19 @@
+name: Test
+on: 
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'enter command'     
+        required: true
+        default: 'warning'
+      tags:
+        description: 'Test scenario tags'  
+        
+jobs:
+  printInputs:
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+       ${{ github.event.inputs.logLevel }}
+       echo "Tags: ${{ github.event.inputs.tags }}"         
+        
